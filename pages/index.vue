@@ -55,7 +55,7 @@
                                 <img src="~/assets/images/css-3.svg" alt="skills image">
                             </div>
                             <h3 class="skills__name">CSS</h3>
-                            <span class="skills__subtitle">Advanced</span>
+                            <span class="skills__subtitle"></span>
                         </div>
                         <div class="skills__data">
                             <div class="skills__blob">
@@ -92,7 +92,7 @@
                                 <img src="~/assets/images/wordpress-icon-1.svg" alt="skills image">
                             </div>
                             <h3 class="skills__name">Wordpress</h3>
-                            <span class="skills__subtitle">Five years</span>
+                            <span class="skills__subtitle"></span>
                         </div>
                         <div class="skills__data">
                             <div class="skills__blob">
@@ -128,12 +128,18 @@
 </template>
 
 <script setup>
-import { useProjectStore } from '/stores/projectStore';
+    import { useProjectStore } from '/stores/projectStore';
 
-const projectStore = useProjectStore();
+    const projectStore = useProjectStore();
 
-const getProject =  projectStore.getProject();
+    const getProject =  projectStore.getProject();
 
+    useHead({
+        title: 'My portfolio | Home',
+        meta: [
+            { name: 'description', content: 'Frontend Webdeveloper in Lincoln Nebraska'}
+        ]
+    })
 
 </script>
 

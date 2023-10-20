@@ -59,7 +59,8 @@ const { project } = defineProps(['project'])
     height: 100%;
 } */
 .projects__content h3{
-    color: red;
+    color: rgb(26,115,232);
+    /* color: red; */
 }
 
 .projects__subtitle{

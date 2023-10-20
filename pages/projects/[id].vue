@@ -226,4 +226,18 @@
 .project-sidebar-single-box span a {
     color: #fff;
 }
+
+/* For medium devices */
+@media screen and (max-width: 576px) {
+.project-sidebar .project-sidebar-single-box {
+    padding: 25px 10px 25px 10px;
+}
+
+.project-sidebar {
+    padding: 60px 30px 75px 30px;
+}
+
+
+}
+
 </style>

@@ -13,6 +13,13 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
+      title: 'My Portfolio',
+      meta: [
+        { name: 'description', content: 'A site to display my projects'}
+      ],
       link: [
         {
           rel: 'stylesheet',

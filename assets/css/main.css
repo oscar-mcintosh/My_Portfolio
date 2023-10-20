@@ -15,14 +15,9 @@
   --container-color: hsl(207, 4%, 95%);
 
   /* Change the first number */
-  /* Blue: 207 - Purple: 250 - Pink: 356 - Teal: 174 */
-  /* --gradient-color: linear-gradient(180deg,
-                      hsla(207, 48%, 72%, 0),
-                      hsla(207, 65%, 65%, 1)); */
 
   --gradient-color: radial-gradient(
                       hsla(207, 4%, 10%, .5 ),
-                      /* hsla(207, 4%, 10%, .5), */
                       hsla(207, 4%, 10%, .5 ));
 
 
@@ -288,15 +283,16 @@ body.dark-theme {
 .nav__link{
     display: flex;
     flex-direction: column;
+    font-weight: var(--font-medium);
     align-items: center;
     row-gap: .25rem;
     font-size: var(--small-font-size);
-    color: var(--text-color-light);
+    color: var(--title-color);
     transition: color .3s;
 }
 
 .nav__link:hover{
-    color: var(--title-color);
+  color: var(--text-color-light);
 }
 
 .nav__link i{
@@ -470,7 +466,7 @@ body.dark-theme {
 
 .skills__subtitle{
   font-size: var(--tiny-font-size);
-  color: var(--text-color-light);
+  color: var(--title-color);
 }
 /* Animation skills */
 .skills__blob:hover img{
@@ -839,11 +835,6 @@ body.dark-theme {
 /* For medium devices */
 @media screen and (min-width: 576px) {
 
-  /* .nav,
-  .nav__menu{
-    width: 380px;
-  } */
-
   .nav{
     margin: 0 auto;
   }
@@ -854,7 +845,6 @@ body.dark-theme {
 
   .projects__container{
     width: 400px;
-    /* overflow: hidden; */
   }
 
 }
