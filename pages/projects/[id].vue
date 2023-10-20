@@ -49,7 +49,9 @@
                                                     </li>
                                                     <li class="project-sidebar-single-box">
                                                         <h6 class="title-text">Preview Website:</h6>
-                                                        <span class="text"><a href="https://nerealty.netlify.app/" target="_blank">{{ project.link }}</a></span>
+                                                        <span class="text">
+                                                            <a  :href="project.link" target="_blank">{{ project.link }}</a>
+                                                        </span>
                                                     </li>
                                                     <li class="project-sidebar-single-box" v-if="project.github">
                                                         <h6 class="title-text">Github Link:</h6>
