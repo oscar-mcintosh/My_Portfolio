@@ -65,6 +65,11 @@ const { project } = defineProps(['project'])
 .projects__subtitle{
     display: flex;
     align-items: center;
+    color: var(--title-color);
+    transition: color .3s;
 }
 
+.projects__subtitle:hover{
+    color: red;
+}
 </style>
