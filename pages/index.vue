@@ -14,15 +14,13 @@
                     </div>
                     <ul class="home__social">
                         <a href="www.linkedin.com/in/oscar-mcintosh" target="_blank" class="home__social-link">
+                                    <span class="link__name">Linkedin</span>
                             <i class="ri-linkedin-box-line"></i>
                         </a>
                         <a href="https://github.com/oscar-mcintosh?tab=repositories" target="_blank" class="home__social-link">
+                                    <span class="link__name">Github</span>
                             <i class="ri-github-line"></i>
                         </a>
-                        <a href="#" target="_blank" class="home__social-link">
-                            <i class="ri-facebook-line"></i>
-                        </a>
-
                     </ul>
                 </div>
                 <div class="home__info">

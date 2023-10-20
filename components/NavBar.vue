@@ -2,6 +2,7 @@
     <header class="header" id="header">
         <nav class="nav container" :class="{ 'hidden': isScrolling }">
             <NuxtLink to="/" class="nav__logo">
+            <span class="link__name">Home</span>
             </NuxtLink>
             <div :class="{ 'show-menu': isNavMenuVisible }" class="nav__menu" id="nav-menu">
                 <ul  class="nav__list grid">
