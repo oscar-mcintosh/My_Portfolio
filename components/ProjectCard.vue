@@ -5,7 +5,8 @@
                 <img :src="project.fullPage" :alt="project.name" class="projects__img"> 
                 <div>
                     <h3 :style="{ color: project.status === 'Completed' ? 'var(--title-color)' : '' }">{{ project.status }}</h3>
-                    <h1 class="projects__title">{{ project.name }}</h1>
+                    <h4 class="projects__title">{{ project.name }}</h4>
+                    <span class="skills__subtitle">{{ project.subtitle }}</span>
                     <span class="projects__subtitle">
                         View <i class="ri-arrow-right-line"></i>
                     </span>
@@ -61,6 +62,10 @@ const { project } = defineProps(['project'])
 .projects__content h3{
     color: rgb(26,115,232);
     /* color: red; */
+}.projects__title{
+    color: var(--title-color);
+    letter-spacing: 1px;
+    font-weight: 500;
 }
 
 .projects__subtitle{
@@ -68,6 +73,7 @@ const { project } = defineProps(['project'])
     align-items: center;
     color: var(--title-color);
     transition: color .3s;
+    margin-top: 5px;
 }
 
 .projects__subtitle:hover{

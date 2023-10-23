@@ -24,13 +24,19 @@
 
             <div class="project-details-section section-gap-tb-165" v-if="project">
                 <div class="project-details-box">
+                    <div class="col-12">
+                                    <div class="project-hero-image">
+                                        <img :src="project.image" alt="">
+                                    </div>
+
+                    </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="project-content-section pos-relative">
-                                    <div class="project-hero-image">
+                                    <!-- <div class="project-hero-image">
                                         <img :src="project.image" alt="">
-                                    </div>
+                                    </div> -->
 
                                     <div class="row">
                                         <div class="col-lg-8">
@@ -146,15 +152,17 @@
 .project-hero-image {
     margin-bottom: 65px;
     width: 100%;
-    /* height: 350px; */
-    overflow: hidden;
+    height: 650px;
+    /* object-fit: cover;
+    object-position: bottom; */
+    /* overflow: hidden; */
 }
 
 .project-hero-image img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
     object-fit: cover;
+    object-position: top;
 }
 
 .row>* {

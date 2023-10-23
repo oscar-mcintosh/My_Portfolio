@@ -469,8 +469,10 @@ body.dark-theme {
 }
 
 .skills__subtitle{
-  font-size: var(--tiny-font-size);
-  color: var(--title-color);
+  font-size: var(--normal-font-size);
+  color: rgb(26,115,232);
+  /* color: var(--title-color); */
+  margin-bottom: 10px;
 }
 /* Animation skills */
 .skills__blob:hover img{
