@@ -201,7 +201,8 @@
 }
 
 .project-sidebar {
-    background: #252734;
+    background-color: var(--container-color);
+    /* background: #252734; */
     padding: 60px 40px 75px 40px;
     margin-top: 60px;
 }
@@ -224,9 +225,9 @@
 
 .project-sidebar .project-sidebar-single-box .title-text {
     font-size: 1.15rem;
-    color: var(--first-color);
-    font-family: Poppins,sans-serif;
-    font-weight: 600;
+    color: rgb(26,115,232);
+    font-weight: var(--font-semi-bold);
+    letter-spacing: 1px;
     margin-bottom: 20px;
 }
 
