@@ -1,10 +1,19 @@
 <template>
-    <div class="projects__content">
+    <!-- <div class="projects__content"> -->
         <div class="item">
             <NuxtLink :to="`/projects/${project.id}`">
-                <img :src="project.fullPage" :alt="project.name" class="projects__img"> 
-                <div>
-                    <h3 :style="{ color: project.status === 'Completed' ? 'var(--title-color)' : '' }">{{ project.status }}</h3>
+                                    <!-- <div class="project-hero-image" :style="{ 
+                            backgroundImage: `url(${project.image})`, 
+                            backgroundSize: 'cover', 
+                            backgroundRepeat: 'no-repeat', 
+                            backgroundPosition: 'top' 
+                        }">
+                        </div> -->
+
+
+                <img :src="project.image" :alt="project.name" class="projects__img"> 
+                <div class="projects__bottom">
+                    <!-- <h3 :style="{ color: project.status === 'Completed' ? 'var(--title-color)' : '' }">{{ project.status }}</h3> -->
                     <h4 class="projects__title">{{ project.name }}</h4>
                     <span class="skills__subtitle">{{ project.subtitle }}</span>
                     <span class="projects__subtitle">
@@ -14,7 +23,7 @@
             </NuxtLink>
 
         </div>
-    </div>
+    <!-- </div> -->
 
 </template>
 
@@ -26,17 +35,22 @@ const { project } = defineProps(['project'])
 
 <style >
 .projects__content{
-    width: 320px;
+    /* width: 320px; */
+}
+.project-hero-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .projects__content .item{
-    margin: 10px;
-    margin: 10px;
-    background: #fff;
+    /* margin: 10px; */
+    /* margin: 10px; */
+    background: #333;
     position: relative;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    height: 350px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
+    /* height: 100%; */
 }
 
 .projects__content .item a{
@@ -46,7 +60,7 @@ const { project } = defineProps(['project'])
 .projects__content .item a img{
     display: block;
     position: relative;
-    height: 100% !important;
+    /* height: 100% !important; */
     width: 100% !important;
     object-position: top;
     object-fit: cover;
@@ -56,9 +70,14 @@ const { project } = defineProps(['project'])
     /* height: 200px; */
 }
 
-/* .projects__img{
-    height: 100%;
-} */
+.projects__img{
+    /* height: 100%; */
+    object-fit: cover;
+}
+
+.projects__bottom{
+    padding: 20px;
+}
 .projects__content h3{
     color: rgb(26,115,232);
     /* color: red; */

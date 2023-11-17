@@ -25,9 +25,16 @@
             <div class="project-details-section section-gap-tb-165" v-if="project">
                 <div class="project-details-box">
                     <div class="col-12">
-                                    <div class="project-hero-image">
-                                        <img :src="project.image" alt="">
-                                    </div>
+                        <div class="project-hero-image" :style="{ 
+                            backgroundImage: `url(${project.image})`, 
+                            backgroundSize: 'cover', 
+                            backgroundRepeat: 'no-repeat', 
+                            backgroundPosition: 'top' 
+                        }">
+                        </div>
+                        <!-- <div class="project-hero-image">
+                            <img :src="project.image" alt="">
+                        </div> -->
 
                     </div>
                     <div class="container">
@@ -153,9 +160,6 @@
     margin-bottom: 65px;
     width: 100%;
     height: 650px;
-    /* object-fit: cover;
-    object-position: bottom; */
-    /* overflow: hidden; */
 }
 
 .project-hero-image img {

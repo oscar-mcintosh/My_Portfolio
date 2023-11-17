@@ -112,7 +112,7 @@
             <span class="section__subtitle">Most recent work</span>
             <div class="container section__border">
                 <div class="projects__container grid">
-                    <div v-for="(project, idx) in projectStore.projects"
+                    <div class="projects__content" v-for="(project, idx) in projectStore.projects"
                             :key="idx">
                     <ProjectCard :project="project" />
                     </div>
