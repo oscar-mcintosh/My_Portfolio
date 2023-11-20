@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <ul class="home__social">
-                        <a href="www.linkedin.com/in/oscar-mcintosh" target="_blank" class="home__social-link">
+                        <a href="https://www.linkedin.com/in/oscar-mcintosh/" target="_blank" class="home__social-link">
                                     <span class="link__name">Linkedin</span>
                             <i class="ri-linkedin-box-line"></i>
                         </a>
