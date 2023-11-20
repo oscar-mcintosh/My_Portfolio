@@ -17,7 +17,7 @@
                                     <span class="link__name">Linkedin</span>
                             <i class="ri-linkedin-box-line"></i>
                         </a>
-                        <a href="https://github.com/oscar-mcintosh?tab=repositories" target="_blank" class="home__social-link">
+                        <a href="https://github.com/oscar-mcintosh" target="_blank" class="home__social-link">
                                     <span class="link__name">Github</span>
                             <i class="ri-github-line"></i>
                         </a>
