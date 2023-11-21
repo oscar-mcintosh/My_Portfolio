@@ -212,6 +212,12 @@ body.dark-theme {
   margin-bottom: 3rem;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .main {
   overflow: hidden; /* For animation */
 }
@@ -471,7 +477,6 @@ body.dark-theme {
 .skills__subtitle{
   font-size: var(--normal-font-size);
   color: rgb(26,115,232);
-  /* color: var(--title-color); */
   margin-bottom: 10px;
 }
 /* Animation skills */
@@ -500,34 +505,48 @@ body.dark-theme {
 
 /*=============== PROJECTS ===============*/
 .projects__container{
-  overflow: initial;
-  position: relative;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  width: 100%;
-  /* margin: 0 auto; */
-
+ row-gap: 2rem;
 }
 
-/* .projects__content{
-  display: grid;
-  justify-content: center;
-  margin-bottom: 4.5rem;
+.projects__link{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .projects__img{
-  width: 250px;
-  margin-bottom: 1.25rem;
-} */
-
+  filter: grayscale(1);
+  transition: filter .5s, transform .5s;
+}
 .projects__subtitle{
   font-size: var(--small-font-size);
   color: var(--text-color-light);
 }
 
+.projects__icon{
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 2rem;
+  color: var(--first-color);
+  transform: transform .4s;
+}
+
+.projects__link:hover .projects__img{
+  transform: scale(1.1);
+  filter: none;
+}
+
+.projects__link:hover .projects__icon{
+  transform: translate(.5rem, -.5rem) rotate(-30deg);
+}
+
 .projects__title{
   font-style: var(--h2-font-size);
-  margin-bottom: 1.25rem;
+  margin-bottom: .25rem;
   margin: .5rem 0 1.25rem;
+  color: rgb(26,115,232);
 }
 
 .projects__button{
@@ -851,7 +870,8 @@ body.dark-theme {
   }
 
   .projects__container{
-    width: 400px;
+    grid-template-columns: 350px;
+    justify-content: center;
   }
 
 }
@@ -889,7 +909,7 @@ body.dark-theme {
   }
 
   .projects__container{
-    width: 500px;
+    grid-template-columns: repeat(2, 350px);
   }
 
 }
@@ -977,8 +997,6 @@ body.dark-theme {
     margin-bottom: 7.5rem;
   }
   
-
-
   
   .dark-theme .bg-header{
     box-shadow:  0 6px 24px hsla(207, 24%, 8%, .6);
@@ -1015,8 +1033,6 @@ body.dark-theme {
   
 
   .home__perfil img{
-    /* width: 650px; */
-    /* height: 650px; */
     object-fit: cover;
   } 
 
@@ -1033,7 +1049,6 @@ body.dark-theme {
   }
 
   .home__info{
-    /* grid-template-rows: repeat(3, 130px); */
     row-gap: 4rem;
     margin-top: 16rem;
   }
@@ -1060,9 +1075,7 @@ body.dark-theme {
 
   .projects__container{
     width: 100%;
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 350px);
   }
 
   .projects__container .swiper-button-prev,

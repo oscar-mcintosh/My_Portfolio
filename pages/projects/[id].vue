@@ -32,18 +32,12 @@
                             backgroundPosition: 'top' 
                         }">
                         </div>
-                        <!-- <div class="project-hero-image">
-                            <img :src="project.image" alt="">
-                        </div> -->
 
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="project-content-section pos-relative">
-                                    <!-- <div class="project-hero-image">
-                                        <img :src="project.image" alt="">
-                                    </div> -->
 
                                     <div class="row">
                                         <div class="col-lg-8">

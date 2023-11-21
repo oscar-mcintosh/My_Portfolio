@@ -110,17 +110,14 @@
         <section class="projects section" id="projects">
             <h2 class="section__title">Projects</h2>
             <span class="section__subtitle">Most recent work</span>
-            <div class="container section__border">
-                <div class="projects__container grid">
-                    <div class="projects__content" v-for="(project, idx) in projectStore.projects"
-                            :key="idx">
+            <div class="projects__container container grid">
+                <article v-for="(project, idx) in projectStore.projects"
+                        :key="idx">
                     <ProjectCard :project="project" />
-                    </div>
-                    <!-- <span v-else><Spinner /> Loading...</span> -->
-                </div>
-
+                </article>
             </div>
         </section>
+
 
     </main>
 </template>
