@@ -15,7 +15,7 @@
   --container-color: hsl(207, 4%, 95%);
 
   /* Change the first number */
-
+/* 
   --gradient-color: radial-gradient(
                       hsla(207, 4%, 10%, .5 ),
                       hsla(207, 4%, 10%, .5 ));
@@ -25,7 +25,7 @@
                       hsl(207, 4%, 99%),
                       hsla(207, 4%, 99%, .2),
                       hsl(207, 4%, 99%));
-
+ */
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -146,7 +146,6 @@ body.dark-theme {
 
 .dark-theme .home__social-link{
   color: #00DDFB;
-  /* color: var(--title-color); */
 }
 
 .dark-theme .section__border{
@@ -227,7 +226,6 @@ img {
     width: 100%;
     position: fixed;
     top: 0;
-    /* bottom: 2rem; */
     z-index: var(--z-fixed);
     box-shadow: 0 4px 20px hsla(207, 24%, 35%, .1);
 
@@ -239,9 +237,7 @@ img {
     justify-content: space-between;
     align-items: center;
     background-color: var(--body-color);
-    /* box-shadow: 0 4px 20px hsla(207, 24%, 35%, .1); */
     padding-inline: 1.5rem;
-    /* border-radius: 3rem; */
     transition: background .4s; /* for dark mode animation */
 }
 
@@ -271,7 +267,6 @@ img {
     .nav__menu{
       position: fixed;
       width: 100%;
-      /* width: 88%; */
       left: 0;
       right: 0;
       top: -60%;
@@ -279,7 +274,6 @@ img {
       background-color: var(--body-color);
       box-shadow: 0 4px 20px hsla(207, 24%, 35%, .1);
       padding: 2rem 1.5rem 5rem;
-      /* border-radius: 2rem; */
       transition: top .3s
     }
 }
@@ -343,7 +337,6 @@ img {
 .home__title span{
   position: absolute;
   text-align: center;
-  /* font-size: var(--biggest-font-size); */
   letter-spacing: .3px;
   margin-bottom: .5rem;
   font-size: 5.5rem;
@@ -358,15 +351,12 @@ img {
 
 .home__title-2{
   bottom: 20px;
-  /* right: 0; */
   z-index: 2;
 }
 
 
 .home__blob{
   position: relative;
-  /* width: 250px;
-  height: 250px; */
   justify-self: center;
   display: flex;
   align-items: center;
@@ -547,6 +537,13 @@ img {
   margin-bottom: .25rem;
   margin: .5rem 0 1.25rem;
   color: rgb(26,115,232);
+}
+
+.projects__subtitle{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  color: red;
+  transition: color .3s;
 }
 
 .projects__button{

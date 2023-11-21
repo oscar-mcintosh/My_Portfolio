@@ -26,13 +26,8 @@ const { project } = defineProps(['project'])
     color: rgb(26,115,232);
     /* color: red; */
 }
-/* .projects__title{
-    color: var(--title-color);
-    letter-spacing: 1px;
-    font-weight: 500;
-} */
 
-.projects__subtitle{
+/* .projects__subtitle{
     display: flex;
     align-items: center;
     color: var(--title-color);
@@ -42,5 +37,5 @@ const { project } = defineProps(['project'])
 
 .projects__subtitle:hover{
     color: red;
-}
+} */
 </style>

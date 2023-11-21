@@ -109,7 +109,7 @@
         <!--==================== PROJECTS ====================-->
         <section class="projects section" id="projects">
             <h2 class="section__title">Projects</h2>
-            <span class="section__subtitle">Most recent work</span>
+            <span class="section__subtitle">Most recent personal projects</span>
             <div class="projects__container container grid">
                 <article v-for="(project, idx) in projectStore.projects"
                         :key="idx">
@@ -139,5 +139,11 @@
 </script>
 
 <style scoped>
+article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
 
 </style>

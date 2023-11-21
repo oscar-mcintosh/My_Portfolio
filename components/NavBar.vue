@@ -2,27 +2,27 @@
     <header class="header" id="header">
         <nav class="nav container" :class="{ 'hidden': isScrolling }">
             <NuxtLink to="/" class="nav__logo">
-            <span class="link__name">Home</span>
+                <span class="link__name">Home</span>
             </NuxtLink>
             <div :class="{ 'show-menu': isNavMenuVisible }" class="nav__menu" id="nav-menu">
                 <ul  class="nav__list grid">
                     <li class="nav__item" @click="closeNavMenu">
-                    <NuxtLink to="/" class="nav__link">
-                        <i class="ri-home-5-line"></i>Home
-                    </NuxtLink>
+                        <NuxtLink to="/" class="nav__link">
+                            <i class="ri-home-5-line"></i>Home
+                        </NuxtLink>
                     </li>
                     <li class="nav__item" @click="closeNavMenu">
-                    <NuxtLink to="#skills" class="nav__link">
-                        <i class="ri-trophy-line"></i>Experience
-                    </NuxtLink>
+                        <NuxtLink to="#skills" class="nav__link">
+                            <i class="ri-trophy-line"></i>Experience
+                        </NuxtLink>
                     </li>
                     <li class="nav__item" @click="closeNavMenu">
-                    <NuxtLink to="#projects" class="nav__link">
-                        <i class="ri-gallery-line"></i>Projects
-                    </NuxtLink>
+                        <NuxtLink to="#projects" class="nav__link">
+                            <i class="ri-gallery-line"></i>Projects
+                        </NuxtLink>
                     </li>
                     <li class="nav__item" @click="closeNavMenu">
-                        <NuxtLink to="https://github.com/oscar-mcintosh?tab=repositories" target="_blank" class="nav__link">
+                        <NuxtLink to="https://github.com/oscar-mcintosh" target="_blank" class="nav__link">
                             <i class="ri-github-line"></i>Github
                         </NuxtLink>
                     </li>
