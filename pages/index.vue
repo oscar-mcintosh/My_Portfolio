@@ -5,7 +5,7 @@
                 <div class="home__data grid">
                     <h1 class="home__title">
                         <!-- Oscar McIntosh<br> -->
-                       <span class="home__title-1">Frontend</span> <span class="home__title-2">Developer</span>
+                       <span class="home__title-1">Oscar</span> <span class="home__title-2">Mcintosh</span>
                     </h1>
                     <div class="home__blob grid">
                         <div class="home__perfil">
