@@ -1,43 +1,23 @@
 <template>
     <div class="projects section  main">
-            <!-- ...::: Start Breadcrumb Section :::... -->
-            <!-- <div class="breadcrumb-section section-bg overflow-hidden pos-relative">
-                <div class="breadcrumb-shape-top-left"></div>
-                <div class="breadcrumb-shape-bottom-right"></div>
-                <div class="breadcrumb-box">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="breadcrumb-content">
-                                    <h2 class="title">Project Details</h2>
-                                    <ul class="breadcrumb-link">
-                                        <li><a href="service-list.html">Projects</a></li>
-                                        <li class="active" aria-current="page">Project Details</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- ...::: End Breadcrumb Section :::... -->
 
             <div class="project-details-section section-gap-tb-165" v-if="project">
                 <div class="project-details-box">
+                    <div class="container">
                     <div class="col-12">
-                        <div class="project-hero-image" :style="{ 
-                            backgroundImage: `url(${project.image})`, 
-                            backgroundSize: 'cover', 
-                            backgroundRepeat: 'no-repeat', 
-                            backgroundPosition: 'top' 
-                        }">
+                        <div class="project-hero-image">
+                            <img :src="project.image" alt="">
                         </div>
 
+                    </div>
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="project-content-section pos-relative">
+                                    <!-- <div class="project-hero-image">
+                                        <img :src="project.image" alt="">
+                                    </div> -->
 
                                     <div class="row">
                                         <div class="col-lg-8">
@@ -101,7 +81,7 @@
             const project = {
             id: data.id,
             name: data.fields.Name,
-            image: data.fields.heroImage?.[0]?.url || null,
+            image: data.fields.fullPage?.[0]?.url || null,
             link: data.fields.demoLink,
             github: data.fields.githubLink,
             description: data.fields.description,
@@ -134,11 +114,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
 } */
-
+.main{
+    margin-top: 1.5rem;
+}
 .row{
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+}
+
+.section{
+    padding: 0;
 }
 
 .col-12 {
@@ -152,23 +138,24 @@
 
 .project-hero-image {
     margin-bottom: 65px;
-    width: 100%;
-    height: 650px;
+    overflow: hidden;
+
+    /* width: 100%;
+    object-fit: contain; */
 }
 
 .project-hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
 }
 
 .row>* {
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    /* padding-right: 1.5rem;
+    padding-left: 1.5rem; */
     margin-top:0;
 }
 
@@ -246,5 +233,13 @@
 
 
 }
+
+/**** Large Devices ****/
+@media screen and (min-width: 1200px) {
+    .project-hero-image {
+        height: 600px;
+    }
+}
+
 
 </style>

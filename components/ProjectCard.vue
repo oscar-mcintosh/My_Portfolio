@@ -1,16 +1,57 @@
 <template>
-            <NuxtLink :to="`/projects/${project.id}`" class="projects__link">
-                <img :src="project.image" :alt="project.name" class="projects__img"> 
-                <i class="ri-arrow-right-circle-line projects__icon"></i>
-            </NuxtLink>
+<div data-animate="fadeup">
+    <NuxtLink :to="`/projects/${project.id}`" class="projects__link">
+        <img :src="project.image" :alt="project.name" class="projects__img"> 
+        <!-- <i class="ri-arrow-right-circle-line projects__icon"></i> -->
+    </NuxtLink>
 
-            <h2 class="projects__title">{{ project.name }}</h2>
-            <span class="projects__subtitle">{{ project.subtitle }}</span>
+    <div class="project__info">
+        <NuxtLink :to="`/projects/${project.id}`" class="link">
 
+            <h3 class="projects__title">{{ project.name }}</h3>
+        </NuxtLink>
+        <p class="projects__subtitle">{{ project.subtitle }}</p>
+
+        <NuxtLink :to="`/projects/${project.id}`" class="link">
+            View
+        </NuxtLink>
+    </div>
+
+    <!-- <span class="projects__subtitle">{{ project.subtitle }}</span> -->
+</div>
 </template>
 
 <script setup>
-const { project } = defineProps(['project'])
+    import gsap from 'gsap'; 
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    const { project } = defineProps(['project']);
+
+gsap.registerPlugin(ScrollTrigger);
+
+const items = ref([]);
+
+// const main = ref();
+// let ctx;
+onMounted(() => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const animatedElements = document.querySelectorAll('[data-animate="fadeup"]');
+  items.value = Array.from(animatedElements);
+
+  items.value.forEach((element) => {
+    gsap.timeline({
+      scrollTrigger: {
+        stagger: 0.2,
+        trigger: element,
+        start: 'top 100%',
+        end: 'center 20%',
+        ease: 'none',
+        toggleActions: 'play none none reverse',
+      },
+    }).fromTo(element, 0.7, { autoAlpha: 0, y: 100 }, { autoAlpha: 1, y: 0 });
+  });
+});
 
 
 </script>
@@ -22,20 +63,18 @@ const { project } = defineProps(['project'])
     object-fit: cover;
 }
 
-.projects__content h3{
-    color: rgb(26,115,232);
-    /* color: red; */
-}
-
-/* .projects__subtitle{
-    display: flex;
-    align-items: center;
+.project__info h3{
     color: var(--title-color);
-    transition: color .3s;
-    margin-top: 5px;
+    font-size: var(--normal-font-size);
+    /* color: rgb(26,115,232); */
 }
 
-.projects__subtitle:hover{
-    color: red;
-} */
+.link:hover{
+    color: rgb(26,115,232);
+
+}
+
+.project__info{
+    display: inline-block;
+}
 </style>

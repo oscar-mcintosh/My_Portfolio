@@ -1,5 +1,8 @@
 <template>
-  <NavBar />
+    <header class="header" id="header">
+
+      <NavBar />
+    </header>
   <main>
     <slot />
   </main>
