@@ -7,10 +7,10 @@
                 <div class="home__container grid">
                     <div class="home__info">
                         <div class="home__info-content">
-                            <p class="home__title-1">Frontend</p>
+                            <p class="home__title-1">Frontend Webdeveloper</p>
 
-                            <h1 class="home__title home__title-1">Web</h1>
-                            <h1 class="home__title home__title-1">Developer</h1>
+                            <h1 class="home__title home__title-1">Oscar</h1>
+                            <h1 class="home__title home__title-1">McIntosh</h1>
                             <p class="home__title-1">Webflow Professional</p>
                         </div>
                     </div>
