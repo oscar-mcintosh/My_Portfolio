@@ -367,7 +367,9 @@ body.dark-theme {
 
 /*=============== HOME ===============*/
 .home{
-  height: 100vh;
+  height: 80vh;
+  display: flex;
+  align-items: center;
 }
 .home__container{
   position: relative;
@@ -396,6 +398,7 @@ body.dark-theme {
 .home__info-content p{
   font-weight: var(--font-medium);
   font-size: var(--h21-font-size);
+  color: var(--title-color);
 
 }
 
@@ -1020,7 +1023,10 @@ body.dark-theme {
 
 /* For medium devices */
 @media screen and (min-width: 576px) {
-
+  .home{
+    height: 100vh;
+  }
+  
   .section {
     padding-block: 2.5rem;
   }
