@@ -46,6 +46,8 @@ export default defineNuxtConfig({
     transpile: ['gsap'],
   },
 
-
+  serverMiddleware: [
+    { path: '/api/contact', handler: '~/api/contact.js' }
+  ]
   
 })
