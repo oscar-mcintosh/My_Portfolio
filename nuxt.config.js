@@ -25,6 +25,13 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css'
         }
+      ],
+      script: [
+        {
+          src: 'https://web3forms.com/client/script.js',
+          async: true,
+          defer: true
+        }
       ]
     }
   },
@@ -38,8 +45,7 @@ export default defineNuxtConfig({
 
       apiKey: process.env.API_KEY,
       apiUrl: process.env.API_URL,
-  
-
+      accessKey: process.env.ACCESS_KEY
     }
   },
   build: {
