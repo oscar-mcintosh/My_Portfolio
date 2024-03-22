@@ -276,6 +276,12 @@
             </div>
         </section>
 
+        <section class="section">
+            <div class="container">
+                <ProjectFilter />
+            </div>
+        </section>
+
         <!--==================== CONTACT ====================-->
          <section class="contact section" id="contact">
             <h2 class="section__title">Contact Me</h2>

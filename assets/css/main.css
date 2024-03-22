@@ -1117,6 +1117,15 @@ body.dark-theme {
     justify-content: center;
   }
 
+  .projects-gallery-filter-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
 }
 
 @media screen and (min-width: 767px) {

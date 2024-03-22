@@ -1,5 +1,9 @@
 <template>
     <div class="projects section  main">
+    <nav>
+      <button @click="navigateToPreviousPage">Previous</button>
+      <button @click="navigateToNextPage">Next</button>
+    </nav>
 
             <div class="project-details-section section-gap-tb-165" v-if="project">
                 <div class="project-details-box">
@@ -66,7 +70,7 @@
 <script setup>
         const { id } = useRoute().params
         const { public: { apiKey, apiUrl } } = useRuntimeConfig();
-
+const router = useRouter(id)
         const headers = new Headers({
           'Authorization': `Bearer ${apiKey}`,
         });
@@ -102,6 +106,55 @@
         definePageMeta({
             layout: "project"
         })
+// Define navigation logic
+  const navigateToPreviousPage = () => {
+    const previousPageId = getPreviousPageId(id)
+    if (previousPageId) {
+      router.push({ name: 'project', params: { id: previousPageId } })
+    } else {
+      // Handle case when there's no previous page
+      console.log('No previous page available')
+    }
+  }
+
+  const navigateToNextPage = () => {
+    const nextPageId = getNextPageId(id)
+    if (nextPageId) {
+        router.push({name: 'project', params : {id: nextPageId}})
+
+    //   router.push({ name: 'project', params: { id: nextPageId } })
+    } else {
+      // Handle case when there's no next page
+      console.log('No next page available')
+    }
+  }
+
+  // Mock data to simulate project IDs
+  const projectIds = [id]; // Assuming these are your project IDs
+
+  // Function to get the index of a project ID in the projectIds array
+  const getIndexById = (id) => {
+    return projectIds.indexOf(parseInt(id));
+  }
+
+  // Mock functions to get previous and next page IDs
+  const getPreviousPageId = (currentId) => {
+const currentIndex = getIndexById(currentId);
+    if (currentIndex > 0) {
+      return projectIds[currentIndex - 1].toString();
+    } else {
+      return null; // No previous page available
+    }
+  }
+
+  const getNextPageId = (currentId) => {
+ const currentIndex = getIndexById(currentId);
+    if (currentIndex < projectIds.length - 1) {
+      return projectIds[currentIndex + 1].toString();
+    } else {
+      return null; // No next page available
+    }
+  }
 
 </script>
 
@@ -139,6 +192,8 @@
 .project-hero-image {
     margin-bottom: 65px;
     overflow: hidden;
+    border: 2px solid var(--body-color);
+    border-radius: 10px;
 
     /* width: 100%;
     object-fit: contain; */
@@ -147,7 +202,7 @@
 .project-hero-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .row>* {
