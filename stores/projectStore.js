@@ -33,7 +33,8 @@ export const useProjectStore = defineStore('projects', {
           fullPage: record.fields.fullPage?.[0]?.url || null,
           subtitle: record.fields.subtitle,
           category: [record.fields.categories],
-        }));
+          project_color: record.fields.bg_color
+         }));
 
         this.projects = listOfProjects;
 

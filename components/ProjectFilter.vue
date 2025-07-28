@@ -13,12 +13,39 @@
 
     <div class="projects__container container grid section__border">
       <article
+        data-animate="fadeup"
         v-for="(project, index) in filteredProjects"
         :key="index"
-        class="col-md-6 filter-item"
+        class="col-md-6 filter-item project"
         
       >
-        <ProjectCard :project="project" :class="{ 'transition': isFiltered(project) }"/>
+        <NuxtLink v-if="!isExternalRoute(getProjectRoute(project))" :to="getProjectRoute(project)" class="projects__link">
+            <img :src="project.image" :alt="project.name" class="projects__img"> 
+        </NuxtLink>
+        <a v-else :href="getProjectRoute(project)" target="_blank" class="projects__link">
+            <img :src="project.image" :alt="project.name" class="projects__img"> 
+        </a>
+        <h3 class="projects__title">{{ project.name }}</h3>
+
+          <div class="project__info">
+            <NuxtLink v-if="!isExternalRoute(getProjectRoute(project))" :to="getProjectRoute(project)" class="link" :style="{ borderBottomColor: project.project_color }">
+
+            </NuxtLink>
+            <a v-else :href="getProjectRoute(project)" target="_blank" class="link" :style="{ borderBottomColor: project.project_color }">
+
+            </a>
+            <!-- <p class="projects__subtitle">{{ project.subtitle }}</p> -->
+
+            <NuxtLink v-if="!isExternalRoute(getProjectRoute(project))" :to="getProjectRoute(project)" class="link" :style="{ borderBottomColor: project.project_color }">
+                View Project
+            </NuxtLink>
+            <a v-else :href="getProjectRoute(project)" target="_blank" class="link" :style="{ borderBottomColor: project.project_color }">
+                View Project
+            </a>
+        </div>
+
+
+        <!-- <ProjectCard :project="project" data-animate="fadeup"/> -->
       </article>
     </div>
   </div>
@@ -43,6 +70,42 @@ const uniqueCategories = computed(() => {
   return ['All', ...categories];
 });
 
+// Function to determine the correct route for a project
+const getProjectRoute = (project) => {
+  // Debug logging to understand the structure
+  console.log('Project:', project.name);
+  console.log('Project category:', project.category);
+  console.log('Project link:', project.link);
+  
+  // Check if the project has categories and if any of them are 'sql' or 'python'
+  const categories = Array.isArray(project.category) ? project.category : [project.category];
+  console.log('Categories array:', categories);
+  
+  // Flatten the categories array in case it contains nested arrays
+  const flattenedCategories = categories.flat();
+  console.log('Flattened categories:', flattenedCategories);
+  
+  const hasSqlOrPython = flattenedCategories.some(cat => 
+    cat && (cat.toLowerCase() === 'sql' || cat.toLowerCase() === 'python')
+  );
+  
+  console.log('Has SQL or Python:', hasSqlOrPython);
+  
+  // If category is sql or python and project has a link, use the external link
+  if (hasSqlOrPython && project.link) {
+    console.log('Using external link:', project.link);
+    return project.link;
+  }
+  
+  // Otherwise, use the internal project route
+  console.log('Using internal route:', `/projects/${project.id}`);
+  return `/projects/${project.id}`;
+};
+
+// Function to check if a route is external
+const isExternalRoute = (route) => {
+  return route && (route.startsWith('http://') || route.startsWith('https://'));
+};
 
 const filterProjects = (category) => {
   activeCategory.value = category;
@@ -78,6 +141,12 @@ const isFiltered = (project) => {
 
 
 <style scoped>
+  .project img{
+    /* width: 100%; */
+    height: 100%;
+    border-radius: 10px;
+    /* object-fit: cover; */
+  }
     .projects-gallery-filter-nav {
         display: flex;
         justify-content: center;
@@ -165,10 +234,35 @@ const isFiltered = (project) => {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
     gap: 10px;
 }
 
+@media  screen and (min-width: 1200px) {
+    .grid{
+    grid-auto-flow: dense;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    /* grid-auto-rows: 300px auto auto; */
+    container-type: inline-size;
 
+    /* width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; */
+  }
+    .project{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    /* display: grid; */
+    /* grid-row: span 3; */
+    /* grid-template-rows: subgrid; */
+    gap: 1rem;
+    /* overflow: hidden; */
+  }
+
+
+}
 
 }
 

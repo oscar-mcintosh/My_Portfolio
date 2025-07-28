@@ -1,13 +1,35 @@
 <template>
     <div class="projects section  main">
-    <nav>
-      <button @click="navigateToPreviousPage">Previous</button>
-      <button @click="navigateToNextPage">Next</button>
-    </nav>
 
             <div class="project-details-section section-gap-tb-165" v-if="project">
                 <div class="project-details-box">
                     <div class="container">
+                        <nav class="breadcrumb-nav">
+                    <button 
+                        @click="navigateToPreviousPage" 
+                        :disabled="!getPreviousPageId(id)"
+                        class="nav-btn prev-btn"
+                        :class="{ 'disabled': !getPreviousPageId(id) }"
+                    >
+                        <span class="arrow">←</span>
+                        Previous
+                    </button>
+                    <div class="breadcrumb-info">
+                        <span class="current-position">{{ getCurrentPosition() }}</span>
+                        <span class="separator">/</span>
+                        <span class="total-projects">{{ projectStore.projects.length }}</span>
+                    </div>
+                    <button 
+                        @click="navigateToNextPage" 
+                        :disabled="!getNextPageId(id)"
+                        class="nav-btn next-btn"
+                        :class="{ 'disabled': !getNextPageId(id) }"
+                    >
+                        Next
+                        <span class="arrow">→</span>
+                    </button>
+                </nav>
+
                     <div class="col-12">
                         <div class="project-hero-image">
                             <img :src="project.image" alt="">
@@ -38,6 +60,11 @@
                                                         <h6 class="title-text">Project Name:</h6>
                                                         <span class="text">{{ project.name }}</span>
                                                     </li>
+                                                    <li class="project-sidebar-single-box">
+                                                        <h6 class="title-text">Feature:</h6>
+                                                        <span class="text">{{ project.name }}</span>
+                                                    </li>
+
                                                     <li class="project-sidebar-single-box">
                                                         <h6 class="title-text">Preview Website:</h6>
                                                         <span class="text">
@@ -70,7 +97,9 @@
 <script setup>
         const { id } = useRoute().params
         const { public: { apiKey, apiUrl } } = useRuntimeConfig();
-const router = useRouter(id)
+        const router = useRouter()
+        const projectStore = useProjectStore()
+        
         const headers = new Headers({
           'Authorization': `Bearer ${apiKey}`,
         });
@@ -102,63 +131,168 @@ const router = useRouter(id)
         project.value = result;
         });
 
+        // Fetch all projects for navigation
+        onMounted(async () => {
+          if (projectStore.projects.length === 0) {
+            await projectStore.getProject()
+          }
+        })
 
         definePageMeta({
             layout: "project"
         })
-// Define navigation logic
-  const navigateToPreviousPage = () => {
-    const previousPageId = getPreviousPageId(id)
-    if (previousPageId) {
-      router.push({ name: 'project', params: { id: previousPageId } })
-    } else {
-      // Handle case when there's no previous page
-      console.log('No previous page available')
-    }
-  }
 
-  const navigateToNextPage = () => {
-    const nextPageId = getNextPageId(id)
-    if (nextPageId) {
-        router.push({name: 'project', params : {id: nextPageId}})
+        // Define navigation logic
+        const navigateToPreviousPage = () => {
+          const previousPageId = getPreviousPageId(id)
+          if (previousPageId) {
+            router.push(`/projects/${previousPageId}`)
+          } else {
+            // Handle case when there's no previous page
+            console.log('No previous page available')
+          }
+        }
 
-    //   router.push({ name: 'project', params: { id: nextPageId } })
-    } else {
-      // Handle case when there's no next page
-      console.log('No next page available')
-    }
-  }
+        const navigateToNextPage = () => {
+          const nextPageId = getNextPageId(id)
+          if (nextPageId) {
+            router.push(`/projects/${nextPageId}`)
+          } else {
+            // Handle case when there's no next page
+            console.log('No next page available')
+          }
+        }
 
-  // Mock data to simulate project IDs
-  const projectIds = [id]; // Assuming these are your project IDs
+        // Function to get the index of a project ID in the projects array
+        const getIndexById = (currentId) => {
+          return projectStore.projects.findIndex(project => project.id === currentId);
+        }
 
-  // Function to get the index of a project ID in the projectIds array
-  const getIndexById = (id) => {
-    return projectIds.indexOf(parseInt(id));
-  }
+        // Functions to get previous and next page IDs
+        const getPreviousPageId = (currentId) => {
+          const currentIndex = getIndexById(currentId);
+          if (currentIndex > 0) {
+            return projectStore.projects[currentIndex - 1].id;
+          } else {
+            return null; // No previous page available
+          }
+        }
 
-  // Mock functions to get previous and next page IDs
-  const getPreviousPageId = (currentId) => {
-const currentIndex = getIndexById(currentId);
-    if (currentIndex > 0) {
-      return projectIds[currentIndex - 1].toString();
-    } else {
-      return null; // No previous page available
-    }
-  }
+        const getNextPageId = (currentId) => {
+          const currentIndex = getIndexById(currentId);
+          if (currentIndex < projectStore.projects.length - 1 && currentIndex !== -1) {
+            return projectStore.projects[currentIndex + 1].id;
+          } else {
+            return null; // No next page available
+          }
+        }
 
-  const getNextPageId = (currentId) => {
- const currentIndex = getIndexById(currentId);
-    if (currentIndex < projectIds.length - 1) {
-      return projectIds[currentIndex + 1].toString();
-    } else {
-      return null; // No next page available
-    }
-  }
+        // Function to get current position in the projects array
+        const getCurrentPosition = () => {
+          const currentIndex = getIndexById(id);
+          return currentIndex !== -1 ? currentIndex + 1 : 0;
+        }
 
 </script>
 
 <style scoped>
+
+/* Breadcrumb Navigation Styles */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--container-color);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #2a2c39;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--text-color);
+  /* background: linear-gradient(135deg, rgb(26,115,232), #1a73e8); */
+  color: var(--body-color);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-btn:hover:not(.disabled) {
+  background: linear-gradient(135deg, #1557b0, #1a73e8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(26, 115, 232, 0.3);
+}
+
+.nav-btn.disabled {
+  background: #4a4a4a;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.nav-btn.disabled:hover {
+  background: #4a4a4a;
+  transform: none;
+  box-shadow: none;
+}
+
+.arrow {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.breadcrumb-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.current-position {
+  color: rgb(26,115,232);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.separator {
+  color: #666;
+  font-weight: 300;
+}
+
+.total-projects {
+  color: #ccc;
+  font-weight: 500;
+}
+
+/* Responsive design for breadcrumb */
+@media screen and (max-width: 768px) {
+  .breadcrumb-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .breadcrumb-info {
+    order: -1;
+  }
+}
 
 /* .spinner{
     position: absolute;

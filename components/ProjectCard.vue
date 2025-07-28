@@ -2,22 +2,20 @@
 <div data-animate="fadeup">
     <NuxtLink :to="`/projects/${project.id}`" class="projects__link">
         <img :src="project.image" :alt="project.name" class="projects__img"> 
-        <!-- <i class="ri-arrow-right-circle-line projects__icon"></i> -->
     </NuxtLink>
+    <h3 class="projects__title">{{ project.name }}</h3>
 
     <div class="project__info">
         <NuxtLink :to="`/projects/${project.id}`" class="link">
 
-            <h3 class="projects__title">{{ project.name }}</h3>
         </NuxtLink>
         <p class="projects__subtitle">{{ project.subtitle }}</p>
 
         <NuxtLink :to="`/projects/${project.id}`" class="link">
-            Read More
+            View Project
         </NuxtLink>
     </div>
 
-    <!-- <span class="projects__subtitle">{{ project.subtitle }}</span> -->
 </div>
 </template>
 

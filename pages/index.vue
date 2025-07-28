@@ -79,7 +79,7 @@
          </section>
 
         <!--==================== SKILLS ====================-->
-        <section class="skills section" id="skills">
+        <!-- <section class="skills section" id="skills">
             <h2 class="section__title">Skills</h2>
             <span class="section__subtitle"></span>
 
@@ -153,10 +153,10 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
             <!--==================== SKILLS2 UI FOR LARGER SCREENS ====================-->
-        <section class="skills2 section" id="skills">
+        <!-- <section class="skills2 section" id="skills">
             <h2 class="section__title">Skills</h2>
             <span class="section__subtitle"></span>
 
@@ -262,19 +262,19 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
         <!--==================== PROJECTS ====================-->
-        <section class="projects section" id="projects">
+        <!-- <section class="projects section" id="projects">
             <h2 class="section__title">Projects</h2>
             <span class="section__subtitle"></span>
             <div class="projects__container container grid section__border">
-                <article v-for="(project, idx) in projectStore.projects"
+                <article class="project" v-for="(project, idx) in projectStore.projects"
                         :key="idx">
                     <ProjectCard :project="project" />
                 </article>
             </div>
-        </section>
+        </section> -->
 
         <section class="section">
             <div class="container">
