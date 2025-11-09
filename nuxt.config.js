@@ -64,7 +64,12 @@ export default defineNuxtConfig({
       crawlLinks: true,
       failOnError: false,
       ignore: ['/www.linkedin.com', '/www.linkedin.com/in/oscar-mcintosh']
+    },
+    experimental: {
+      wasm: true
     }
-  }
+  },
+  
+  ssr: true
   
 })
