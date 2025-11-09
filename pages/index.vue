@@ -27,7 +27,7 @@
                     <div class="image-half-round-shape"></div>
                     <ul class="home__social">
                         <li class="home__social-link">
-                            <a href="www.linkedin.com/in/oscar-mcintosh" target="_blank">
+                            <a href="https://www.linkedin.com/in/oscar-mcintosh" target="_blank" rel="noopener noreferrer">
                                 <i class="ri-linkedin-box-line"></i>
                             </a>
                         </li>
