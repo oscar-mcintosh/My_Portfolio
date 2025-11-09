@@ -305,7 +305,10 @@
     }
     const projectStore = useProjectStore();
 
-    const getProject =  projectStore.getProject();
+    // Only fetch projects on client side, not during build/prerender
+    if (process.client) {
+      projectStore.getProject();
+    }
 
     useHead({
         title: 'TwoFortyTwo | Home',
