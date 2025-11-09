@@ -57,6 +57,14 @@ export default defineNuxtConfig({
 
   serverMiddleware: [
     { path: '/api/contact', handler: '~/api/contact.js' }
-  ]
+  ],
+  
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+      ignore: ['/www.linkedin.com', '/www.linkedin.com/in/oscar-mcintosh']
+    }
+  }
   
 })
