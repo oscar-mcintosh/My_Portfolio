@@ -7,11 +7,11 @@
                 <div class="home__container grid">
                     <div class="home__info">
                         <div class="home__info-content">
-                            <p class="home__title-1">Webflow Professional</p>
+                            <p class="home__title-1">Data Analyst</p>
 
                             <h1 data-text="Oscar" class="home__title home__title-1">Oscar</h1>
                             <h1 data-text="McIntosh" class="home__title home__title-1">McIntosh</h1>
-                            <p class="home__title-1">Freelancer and subcontractor</p>
+                            <p class="home__title-1">SQL & Snowflake Specialist</p>
                         </div>
                     </div>
 
@@ -59,19 +59,19 @@
                         <span class="section__subtitle"></span>
                     </h2>
                     <p class="about__description">
-                        Hello! My name is Oscar McIntosh. I'm a Freelance and Contract Frontend Web Developer based in the heart of Lincoln, Nebraska, and passion for crafting beautiful and functional websites. With six years of hands-on experience under my belt, I've honed my skills in HTML, CSS, JavaScript, and Vue.js.
+                        Hello! My name is Oscar McIntosh. I'm a Data Analyst based in Lincoln, Nebraska, with a passion for transforming complex data into actionable insights. With two years of hands-on experience, I specialize in working with large datasets, writing complex SQL queries, and leveraging Snowflake to extract meaningful patterns and drive data-driven decision-making.
                     </p>
                     <p class="about__description">
-                        My specialization lies in Webflow, where I bring creativity and precision together to bring concepts to life. From sleek designs to seamless user experiences, I thrive on turning visions into reality, pixel by pixel.
+                        My expertise lies in analyzing vast amounts of data to uncover trends, identify opportunities, and solve complex business problems. I thrive on the challenge of writing efficient SQL queries that can handle millions of records, ensuring optimal performance and accuracy in data extraction and analysis.
                     </p>
                     <p class="about__description">
-                        Beyond coding, I'm well-versed in the intricacies of SEO, leveraging tools like Google Analytics and Tag Manager to optimize website performance and drive organic traffic. I believe in the power of data-driven decisions, ensuring that every aspect of a project is strategically crafted for success.
+                        I have extensive experience with Snowflake, where I design and optimize data warehouses, create scalable data pipelines, and perform advanced analytics. My work involves transforming raw data into structured, meaningful insights that help organizations make informed strategic decisions.
                     </p>
                     <p class="about__description">
-                        In every project I undertake, my goal is simple: to create web experiences that not only meet but exceed expectations. Whether it's a personal blog or a corporate website, I approach each task with enthusiasm, attention to detail, and a commitment to excellence.
+                        In every project I undertake, my goal is to deliver clear, accurate, and actionable insights from complex data. Whether it's building comprehensive reports, creating data visualizations, or developing predictive models, I approach each task with meticulous attention to detail and a commitment to excellence.
                     </p>
                     <p class="about__description">
-                        Let's collaborate and transform your digital presence into something truly extraordinary.
+                        Let's collaborate and unlock the power of your data to drive meaningful business outcomes.
                     </p>
                     <a href="#contact" class="button">Contact Me</a>
                 </div>
@@ -311,15 +311,15 @@
     }
 
     useHead({
-        title: 'TwoFortyTwo | Home',
+        title: 'Oscar McIntosh | Data Analyst',
         meta: [
             { name: 'description', 
-            content: 'Experienced, Webflow, Frontend, Web Developer in Lincoln, Nebraska, crafting engaging online experiences. Transforming designs into seamless, responsive websites. Let\'s bring your digital vision to life! Contact me for expert frontend website development.'
+            content: 'Experienced Data Analyst in Lincoln, Nebraska, specializing in SQL queries, Snowflake, and large dataset analysis. Transforming complex data into actionable insights. Contact me for expert data analysis and business intelligence solutions.'
             }
         ],
         meta: [
             { name: 'keywords', 
-            content: 'Webflow, Frontend, Web Developer, Lincoln, Nebraska.'
+            content: 'Data Analyst, SQL, Snowflake, Data Analysis, Business Intelligence, Lincoln, Nebraska.'
             }
         ]
 

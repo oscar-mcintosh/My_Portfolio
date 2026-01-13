@@ -16,9 +16,9 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'My Portfolio',
+      title: 'Oscar McIntosh - Data Analyst Portfolio',
       meta: [
-        { name: 'description', content: 'A site to display my projects'}
+        { name: 'description', content: 'Data Analyst specializing in SQL, Snowflake, and large dataset analysis. Transforming complex data into actionable business insights.'}
       ],
       link: [
         {
