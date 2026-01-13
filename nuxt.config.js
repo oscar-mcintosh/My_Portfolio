@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
+    '@netlify/nuxt',
   ],
   app: {
     head: {
@@ -54,16 +55,12 @@ export default defineNuxtConfig({
   build: {
     transpile: ['gsap'],
   },
-
-  serverMiddleware: [
-    { path: '/api/contact', handler: '~/api/contact.js' }
-  ],
   
   nitro: {
     prerender: {
       crawlLinks: true,
       failOnError: false,
-      ignore: ['/www.linkedin.com', '/www.linkedin.com/in/oscar-mcintosh']
+      ignore: ['/www.linkedin.com', '/www.linkedin.com/in/oscar-mcintosh', '/api/contact']
     }
   }
   
