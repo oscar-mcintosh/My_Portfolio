@@ -68,10 +68,7 @@
                         I have extensive experience with Snowflake, where I design and optimize data warehouses, create scalable data pipelines, and perform advanced analytics. My work involves transforming raw data into structured, meaningful insights that help organizations make informed strategic decisions.
                     </p>
                     <p class="about__description">
-                        In every project I undertake, my goal is to deliver clear, accurate, and actionable insights from complex data. Whether it's building comprehensive reports, creating data visualizations, or developing predictive models, I approach each task with meticulous attention to detail and a commitment to excellence.
-                    </p>
-                    <p class="about__description">
-                        Let's collaborate and unlock the power of your data to drive meaningful business outcomes.
+                        In every project I undertake, my goal is to deliver clear, accurate, and actionable insights from complex data. Whether it's building comprehensive reports or, creating data visualizations, I approach each task with meticulous attention to detail and a commitment to excellence.
                     </p>
                     <a href="#contact" class="button">Contact Me</a>
                 </div>
@@ -315,9 +312,7 @@
         meta: [
             { name: 'description', 
             content: 'Experienced Data Analyst in Lincoln, Nebraska, specializing in SQL queries, Snowflake, and large dataset analysis. Transforming complex data into actionable insights. Contact me for expert data analysis and business intelligence solutions.'
-            }
-        ],
-        meta: [
+            },
             { name: 'keywords', 
             content: 'Data Analyst, SQL, Snowflake, Data Analysis, Business Intelligence, Lincoln, Nebraska.'
             }
