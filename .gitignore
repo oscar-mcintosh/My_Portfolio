@@ -33,3 +33,6 @@ logs
 
 .vercel
 .env*
+
+# Local MCP config (may contain tokens)
+mcp.json
