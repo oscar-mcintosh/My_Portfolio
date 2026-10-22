@@ -24,8 +24,6 @@ logs
 .env.*
 !.env.example
 
-# Local Netlify folder
-.netlify
 
 # Firebase CLI cache
 .firebase
