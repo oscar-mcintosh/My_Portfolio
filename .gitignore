@@ -29,3 +29,9 @@ logs
 
 # Firebase CLI cache
 .firebase
+
+# Vercel
+.vercel
+
+.vercel
+.env*

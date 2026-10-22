@@ -80,6 +80,8 @@ export default defineNuxtConfig({
   },
   
   nitro: {
+    // Plain static output in .output/public; stops Nitro auto-picking a host preset (e.g. vercel-static).
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       failOnError: false,
