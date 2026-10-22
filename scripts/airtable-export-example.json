@@ -1,0 +1,56 @@
+{
+  "records": [
+    {
+      "id": "recABC123XYZ",
+      "fields": {
+        "Name": "Project Name",
+        "heroImage": [
+          {
+            "url": "https://example.com/hero-image.jpg"
+          }
+        ],
+        "demoLink": "https://demo-link.com",
+        "status": "active",
+        "fullPage": [
+          {
+            "url": "https://example.com/full-page-screenshot.jpg"
+          }
+        ],
+        "subtitle": "Brief project description",
+        "categories": "Web Development",
+        "bg_color": "#1a73e8",
+        "order": 1,
+        "description": "Full project description in markdown or HTML",
+        "technology": "Vue.js, Nuxt.js, Firebase",
+        "githubLink": "https://github.com/username/repo",
+        "font_color": "#000000"
+      }
+    },
+    {
+      "id": "recDEF456ABC",
+      "fields": {
+        "Name": "Another Project",
+        "heroImage": [
+          {
+            "url": "https://example.com/hero-image2.jpg"
+          }
+        ],
+        "demoLink": "https://another-demo.com",
+        "status": "active",
+        "fullPage": [
+          {
+            "url": "https://example.com/full-page2.jpg"
+          }
+        ],
+        "subtitle": "Another project subtitle",
+        "categories": "Data Analysis",
+        "bg_color": "#34a853",
+        "order": 2,
+        "description": "## Project Overview\n\nThis is a markdown description.",
+        "technology": "SQL, Snowflake, Python",
+        "githubLink": null,
+        "font_color": "#ffffff"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Projects collection - public read, no public write
+    match /projects/{project} {
+      // Allow anyone to read projects (for your portfolio site)
+      allow read: if true;
+      
+      // Only authenticated admin users can write
+      // For now, all writes should be done through Firebase Console or migration scripts
+      allow write: if false;
+    }
+    
+    // Default: deny all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

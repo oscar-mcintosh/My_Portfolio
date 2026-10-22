@@ -2,7 +2,7 @@
     <main class="main">
         <!--==================== HOME ====================-->
 
-        <section class="home section" id="home">
+        <section ref="homeRef" class="home section" id="home">
             <div class="container">
                 <div class="home__container grid">
                     <div class="home__info">
@@ -18,12 +18,12 @@
                     <div class="home__data grid">
                         <div class="home__blob">
                             <div class="home__perfil">
-                                <img src="~/assets/images/portfolio_pic.webp" alt="picture of man staring" />
+                                <img src="~/assets/images/twofourtwo_hero.webp" alt="picture of man staring" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="home__social-wrap">
+                <!-- <div class="home__social-wrap">
                     <div class="image-half-round-shape"></div>
                     <ul class="home__social">
                         <li class="home__social-link">
@@ -44,7 +44,7 @@
 
 
                     </ul>
-                </div>
+                </div> -->
             </div>
 
         </section>
@@ -70,7 +70,15 @@
                     <p class="about__description">
                         In every project I undertake, my goal is to deliver clear, accurate, and actionable insights from complex data. Whether it's building comprehensive reports or, creating data visualizations, I approach each task with meticulous attention to detail and a commitment to excellence.
                     </p>
-                    <a href="#contact" class="button">Contact Me</a>
+                    <div class="custom-link">
+                        <NuxtLink to="/resume" class="button">
+                            <b>VIEW RESUME</b>
+                        </NuxtLink>
+                        <button @click="downloadResume" class="button download-button">
+                            <b>DOWNLOAD RESUME</b>
+                        </button>
+                    </div>
+
                 </div>
             </div>
          </section>
@@ -273,11 +281,7 @@
             </div>
         </section> -->
 
-        <section class="section">
-            <div class="container">
-                <ProjectFilter />
-            </div>
-        </section>
+        <PortfolioGallery />
 
         <!--==================== CONTACT ====================-->
          <section class="contact section" id="contact">
@@ -290,21 +294,15 @@
 </template>
 
 <script setup>
-    import { useProjectStore } from '/stores/projectStore';
     import gsap from 'gsap'; 
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import { INTRO, prefersReducedMotion } from '~/composables/useIntroTiming';
 
     gsap.registerPlugin(ScrollTrigger);
     const { $posthog } = useNuxtApp()
     if ($posthog) {
         const posthog = $posthog()
         posthog.capture('<event_name>')
-    }
-    const projectStore = useProjectStore();
-
-    // Only fetch projects on client side, not during build/prerender
-    if (process.client) {
-      projectStore.getProject();
     }
 
     useHead({
@@ -319,27 +317,48 @@
         ]
 
     })
-const main = ref();
+const homeRef = ref(null);
 let ctx;
 
 onMounted(() => {
-  const fadeInElements = () => {
-    // const image = document.querySelector('.home__perfil'); 
-    const text = document.querySelectorAll('.home__title-1'); // Select the text element
-    
+  ctx = gsap.context(() => {
+    const fillTitles = () =>
+      homeRef.value?.querySelectorAll('.home__title').forEach(el => el.classList.add('is-filled'));
 
-    gsap.from(text, {
-      duration: 2,
-      ease: "power4.out",
-      y: 65,
-      stagger: 0.2,
-      delay: 0.3 // Adding a slight delay for a staggered effect
-    });
-  };
+    if (prefersReducedMotion()) {
+      gsap.set(['.home__title-1', '.home__perfil'], { autoAlpha: 1 });
+      fillTitles();
+      return;
+    }
 
+    // Same start, duration, ease and stagger as the NavBar links
+    gsap.fromTo('.home__title-1',
+      { y: 65, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: INTRO.duration,
+        ease: INTRO.ease,
+        stagger: INTRO.stagger,
+        delay: INTRO.delay,
+        onComplete: fillTitles
+      }
+    );
 
-  fadeInElements(); // Trigger the fading in of elements
+    gsap.fromTo('.home__perfil',
+      { autoAlpha: 0 },
+      {
+        autoAlpha: 1.4,
+        duration: INTRO.imageDuration,
+        ease: 'power2.out',
+        delay: INTRO.delay
+      }
+    );
+  }, homeRef.value);
+});
 
+onBeforeUnmount(() => {
+  ctx?.revert();
 });
 
 </script>
@@ -348,32 +367,16 @@ onMounted(() => {
 article{
     margin-bottom: 30px;
 }
-.home__perfil{
-    animation: fadeIn 1s ease-in-out
-}
-
+/* Hidden until GSAP reveals them, so the pre-rendered HTML doesn't flash before the intro */
+.home__perfil,
 .home__title-1{
-    animation: fade 1s ease-in-out
+    visibility: hidden;
 }
 
-@keyframes fadeIn{
-    0%{
-        opacity: 0;
-    }
-}
-
-@keyframes fade{
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0;
-    }
-    /* 75%{
-        opacity: 0;
-    } */
-    100%{
-        opacity: 1;
+@media (prefers-reduced-motion: reduce){
+    .home__perfil,
+    .home__title-1{
+        visibility: visible;
     }
 }
 

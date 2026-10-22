@@ -1,6 +1,6 @@
 <template>
     <!-- <header class="header" id="header"> -->
-        <nav class="nav container" :class="{ 'hidden': isScrolling }">
+        <nav ref="navRef" class="nav container" :class="{ 'hidden': isScrolling }">
             <NuxtLink to="/" class="nav__logo animate">
             <span class="link__name">Home</span>
             </NuxtLink>
@@ -16,15 +16,15 @@
                         <i class="ri-trophy-line"></i>Experience
                     </NuxtLink>
                     </li>
-                    <li class="nav__item experience2" @click="closeNavMenu">
+                    <!-- <li class="nav__item experience2" @click="closeNavMenu">
                     <NuxtLink to="#experience2" class="nav__link animate">
                         <i class="ri-trophy-line"></i>Experience
                     </NuxtLink>
-                    </li>
+                    </li> -->
 
                     <li class="nav__item" @click="closeNavMenu">
                     <NuxtLink to="#portfolio" class="nav__link animate">
-                        <i class="ri-gallery-line"></i>Portfolio
+                        <i class="ri-gallery-line"></i>Projects
                     </NuxtLink>
                     </li>
                     <li class="nav__item" @click="closeNavMenu">
@@ -58,6 +58,7 @@
 <script setup>
     import { ref, onMounted, onBeforeUnmount } from 'vue';
     import gsap from 'gsap';
+    import { INTRO, prefersReducedMotion } from '~/composables/useIntroTiming';
 
 
     const isNavMenuVisible = ref(false);
@@ -82,28 +83,35 @@
       }, 500);
     };
 
+    const navRef = ref(null);
+    let ctx;
+
     onMounted(() => {
       window.addEventListener('scroll', handleScroll);
-            const animateNavLinks = () => {
-    // Select all your navigation links
-        const navLinks = document.querySelectorAll('.animate'); // Replace with your class
 
-        // Use GSAP to animate the links
-        gsap.from(navLinks, {
-        duration: 1, // Animation duration in seconds
-        y: -100, // Move 100px on the y-axis (negative value moves upwards)
-        // opacity: 0, 
-        stagger: 0.2 // Optional: Stagger the animation for a nicer effect
-        });
-    };
-    animateNavLinks();
-
-      
-      
+      // Scoped to this nav so other `.animate` elements on the page aren't affected
+      ctx = gsap.context(() => {
+        if (prefersReducedMotion()) {
+          gsap.set('.animate', { autoAlpha: 1 });
+          return;
+        }
+        gsap.fromTo('.animate',
+          { y: -100, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: INTRO.duration,
+            ease: INTRO.ease,
+            stagger: INTRO.stagger,
+            delay: INTRO.delay
+          }
+        );
+      }, navRef.value);
     });
 
     onBeforeUnmount(() => {
       window.removeEventListener('scroll', handleScroll);
+      ctx?.revert();
     });
 
 </script>
@@ -114,17 +122,14 @@
     display: none;
     }
 
+/* Hidden until GSAP reveals it, so the pre-rendered HTML doesn't flash before the intro */
 .animate{
-    animation: fade 2s ease-in-out
-
+    visibility: hidden;
 }
 
-@keyframes fade{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
+@media (prefers-reduced-motion: reduce){
+    .animate{
+        visibility: visible;
     }
 }
 

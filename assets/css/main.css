@@ -8,8 +8,9 @@
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(207, 65%, 65%);
-  --title-color: hsl(207, 4%, 16%);
+  --title-color: hsl(240, 4%, 10%);
   --text-color: hsl(207, 4%, 28%);
+  --button-color:hsl(103, 12%, 30%);
   --text-color-light: hsl(207, 4%, 56%);
   --body-color: hsl(100, 100%, 99%);
   --container-color: hsl(207, 4%, 95%);
@@ -52,6 +53,35 @@
   --handle-size: 3rem;
   --img-gap: .25rem;
 
+  /*========== Spacing, radius and motion ==========*/
+  --space-2xs: .25rem;
+  --space-xs: .5rem;
+  --space-s: .75rem;
+  --space-m: 1.25rem;
+  --space-l: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --space-xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+
+  --radius-m: .75rem;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --duration-fast: .15s;
+  --duration-base: .3s;
+  --duration-slow: .6s;
+
+}
+
+/* Hides content visually while keeping it available to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Responsive typography */
@@ -106,32 +136,40 @@ p{
 a {
   text-decoration: none;
 }
-
-.button {
-  font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
-  position: relative;
-  overflow: hidden;
+button{
+  border: none;
+  outline: none;
   cursor: pointer;
-  color: var(--text-color);
-  box-shadow: none!important;
-  outline: 0 !important;
-  width: 120px;
-  border: 1px solid var(--first-color);
-  border-radius: 42.5px;
-  width: 120px;
+}
+
+ .button {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 200px;
+  padding: 1rem 3rem;
   text-align: center;
-  transition: background 1.5s ease-in-out;
-  transition: color 1s ease-in-out;
+  /* box-shadow: var(--box-shadow-inset); */
+  background-color: var(--text-color);
+  /* border: 1px solid var(--text-color); */
+  color: var(--body-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 200px;
+  transition: background-color 0.3s ease;
 }
+
 
 
 .button:hover{
   background: var(--text-color);
   color: var(--body-color);
+}
+
+.custom-link {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .link{
@@ -260,6 +298,10 @@ body.dark-theme {
 
 .main {
   overflow: hidden; /* For animation */
+}
+
+.border{
+
 }
 
 /*=============== HEADER & NAV ===============*/
@@ -425,8 +467,11 @@ body.dark-theme {
   overflow: hidden;
   width: 0%;
   transition: 1s;
+}
+
+/* Added by the GSAP intro in pages/index.vue once the titles have landed */
+.home__title.is-filled::before{
   animation: fill 2s cubic-bezier(0.6, 0, 0.4, 1) forwards;
-  animation-delay: 1s;
 }
 
 @keyframes fill {
@@ -1078,7 +1123,7 @@ body.dark-theme {
   
   
   .container {
-    max-width: 1024px;
+    max-width: 1224px;
     margin-inline: 3.5rem;
 }
 
